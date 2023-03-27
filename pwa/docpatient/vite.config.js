@@ -20,6 +20,21 @@ export default defineConfig({
             sizes: '512x512',
             type: 'image/png'
           }
+        ],
+        "prefer_related_applications": true,
+          "shortcuts": [
+          {
+            name: "Télécharger",
+            description: "Télécharger cette application",
+            url: "/telecharger",
+            icons: [
+              {
+                "src": "logo.png",
+                "sizes": "512x512",
+                "type": "image/png"
+              }
+            ]
+          }
         ]
       }
     }),

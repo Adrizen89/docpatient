@@ -38,6 +38,20 @@ function MyForm() {
     setTelephone(medecin.telephone);
   };
 
+  const downloadpwa = () => {
+    fetch('/manifest.json')
+      .then(response => response.json())
+      .then(manifest => {
+        const blob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'manifest.json';
+        link.click();
+      })
+      .catch(error => console.error('Error fetching manifest:', error));
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const summary = `${nom} ${prenom}`;
@@ -50,7 +64,8 @@ function MyForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="container">
+      <form onSubmit={handleSubmit}>
       <label htmlFor="">
         Nom
         <input type="text" value={nom} onChange={(event) => setNom(event.target.value)} />
@@ -84,6 +99,9 @@ function MyForm() {
         </button>
       </div>
     </form>
+    <button onClick={downloadpwa}>Télécharger l'application</button>
+
+    </div>
   );
 }
 
