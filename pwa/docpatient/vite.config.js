@@ -5,6 +5,9 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
+      devOptions:{
+        enabled: true
+      },
       manifest: {
         name: "DocPatient",
         short_name: 'DP',
